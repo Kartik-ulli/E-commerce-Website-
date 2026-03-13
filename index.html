@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blouse Designs Gallery</title>
+  <style>
+    /* root variables for easy theming */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      --nav-gradient: linear-gradient(to right, #6a11cb, #2575fc);
+      --section-bg-odd: rgba(255,255,255,0.8);
+      --section-bg-even: rgba(240,240,255,0.8);
+      --text-color: #333;
+      --heading-color: #222;
+      --paragraph-color: #444;
+    }
+    /* alternate theme variables */
+    .alt-theme {
+      --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      --nav-gradient: linear-gradient(to right, #ff6fb5, #ffb6e0);
+      --section-bg-odd: rgba(255,240,250,0.9);
+      --section-bg-even: rgba(255,230,245,0.9);
+      --text-color: #222;
+      --heading-color: #111;
+      --paragraph-color: #333;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+    }
+    /* Navbar */
+    .navbar {
+      background: var(--nav-gradient);
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .navbar a:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    /* Modal for image viewer */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 60px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      user-select: none;
+    }
+    .modal-nav span:hover {
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      transition: background 0.5s;
+    }
+    section:nth-of-type(odd) {
+      background: rgba(255,255,255,0.8);
+    }
+    section:nth-of-type(even) {
+      background: rgba(240,240,255,0.8);
+    }
+    section h2 {
+      margin-bottom: 20px;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    section p {
+      max-width: 600px;
+      margin: auto;
+      color: #444;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <button id="themeToggle" style="float:right;margin:8px 20px;padding:6px 12px;border:none;border-radius:4px;cursor:pointer;background:rgba(255,255,255,0.3);color:#fff;">Change Colors</button>
+  </div>
+
+  <!-- Home / Gallery -->
+  <section id="home">
+    <h2>Blouse Designs Gallery</h2>
+    <input type="text" id="searchInput" placeholder="Search designs..." style="padding:10px;width:80%;max-width:400px;margin:20px auto;display:block;border:1px solid #ccc;border-radius:4px;">
+    <div class="gallery">
+      <!-- Images -->
+      <img src="image1.jpg" alt="Blouse Design 1">
+      <img src="image2.jpg" alt="Blouse Design 2">
+      <img src="image3.jpg" alt="Blouse Design 3">
+      <img src="image4.jpg" alt="Blouse Design 4">
+      <img src="image5.jpg" alt="Blouse Design 5">
+      <img src="image6.jpg" alt="Blouse Design 6">
+      <img src="image7.jpg" alt="Blouse Design 7">
+      <img src="image26.jpg" alt="Blouse Design 8">
+      <img src="image9.jpg" alt="Blouse Design 9">
+      <img src="image10.jpg" alt="Blouse Design 10">
+      <img src="image11.jpg" alt="Blouse Design 11">
+      <img src="image12.jpg" alt="Blouse Design 12">
+      <img src="image13.jpg" alt="Blouse Design 13">
+      <img src="image14.jpg" alt="Blouse Design 14">
+      <img src="image15.jpg" alt="Blouse Design 15">
+      <img src="image16.jpg" alt="Blouse Design 16">
+      <img src="image17.jpg" alt="Blouse Design 17">
+      <img src="image18.jpg" alt="Blouse Design 18">
+      <img src="image19.jpg" alt="Blouse Design 19">
+      <img src="image20.jpg" alt="Blouse Design 20">
+      <img src="image21.jpg" alt="Blouse Design 21">
+      <img src="image22.jpg" alt="Blouse Design 22">
+      <img src="image23.jpg" alt="Blouse Design 23">
+      <img src="image24.jpg" alt="Blouse Design 24">
+      <img src="image25.jpg" alt="Blouse Design 25">
+      <img src="image8.jpg" alt="Blouse Design 26">
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We specialize in creating elegant and modern blouse designs that blend tradition with contemporary fashion. Each piece is crafted with attention to detail and a passion for style.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>For inquiries or custom orders, reach out to us at:</p>
+    <p>Email: info@blousedesigns.com</p>
+    <p>Phone: +91-9876543210</p>
+  </section>
+
+  <!-- Modal for viewing images -->
+  <div id="imgModal" class="modal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div class="modal-nav">
+      <span id="modalPrev">&#10094;</span>
+      <span id="modalNext">&#10095;</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const images = Array.from(document.querySelectorAll('.gallery img'));
+      const searchInput = document.getElementById('searchInput');
+      // filter function based on alt text
+      function filterImages() {
+        const term = searchInput.value.toLowerCase();
+        images.forEach(img => {
+          const match = img.alt.toLowerCase().includes(term);
+          img.style.display = match ? '' : 'none';
+        });
+      }
+      searchInput.addEventListener('input', filterImages);
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImg');
+      const closeBtn = document.getElementById('modalClose');
+      const prevBtn = document.getElementById('modalPrev');
+      const nextBtn = document.getElementById('modalNext');
+      let currentIndex = -1;
+
+      function showModal(index) {
+        currentIndex = index;
+        modalImg.src = images[index].src;
+        modal.style.display = 'block';
+      }
+
+      function hideModal() {
+        modal.style.display = 'none';
+      }
+
+      function showNext() {
+        if (currentIndex < images.length - 1) {
+          showModal(currentIndex + 1);
+        }
+      }
+
+      function showPrev() {
+        if (currentIndex > 0) {
+          showModal(currentIndex - 1);
+        }
+      }
+
+      images.forEach((img, idx) => {
+        img.addEventListener('click', () => showModal(idx));
+      });
+
+      closeBtn.addEventListener('click', hideModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) hideModal();
+      });
+      nextBtn.addEventListener('click', showNext);
+      prevBtn.addEventListener('click', showPrev);
+
+      document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'block') {
+          if (e.key === 'ArrowRight') showNext();
+          if (e.key === 'ArrowLeft') showPrev();
+          if (e.key === 'Escape') hideModal();
+        }
+      });
+
+      // theme toggle logic
+      const themeToggle = document.getElementById('themeToggle');
+      function applySavedTheme() {
+        if (localStorage.getItem('altTheme') === 'true') {
+          document.body.classList.add('alt-theme');
+        }
+      }
+      themeToggle.addEventListener('click', () => {
+        const isAlt = document.body.classList.toggle('alt-theme');
+        localStorage.setItem('altTheme', isAlt);
+      });
+      applySavedTheme();
+    })();
+  </script>
+
+</body>
+</html>
